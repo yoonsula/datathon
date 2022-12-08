@@ -27,6 +27,9 @@
 ### 모델 활용
   - YOLOv5 전이학습을 통한 객체 인식
   - https://github.com/ultralytics/yolov5
+  > !git clone https://github.com/ultralytics/yolov5  # clone repo
+  > %cd yolov5
+  > %pip install -qr requirements.txt # install dependencies
   - 기존의 이미지와 라벨 파일을 YOLO format 형식으로 변환 후 학습 및 검증, 테스트 실시
   
 <br/>
