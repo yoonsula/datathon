@@ -26,10 +26,35 @@
 
 ### 모델 활용
   - YOLOv5 전이학습을 통한 객체 인식
-  - https://github.com/ultralytics/yolov5
-  > !git clone https://github.com/ultralytics/yolov5  # clone repo
-  > %cd yolov5
-  > %pip install -qr requirements.txt # install dependencies
-  - 기존의 이미지와 라벨 파일을 YOLO format 형식으로 변환 후 학습 및 검증, 테스트 실시
+  <pre><code>
+  # https://github.com/ultralytics/yolov5
   
+  # 모델 가져오기
+  !git clone https://github.com/ultralytics/yolov5  # clone repo
+  %cd yolov5
+  %pip install -qr requirements.txt # install dependencies
+  
+  # YOLOv5에서 가중치 가져오기
+  !wget https://github.com/ultralytics/yolov5/releases/download/v6.0/yolov5s.pt
+  </code></pre>
+  - 기존의 이미지와 라벨 파일을 YOLO format 형식으로 변환 후 학습 및 검증, 테스트 실시
+
+<br/>
+
+### 학습 방법
+  - {dataset.location} 에는 데이터 경로를 입력하면 됩니다. ex) /content/gdrive/MyDrive/drawing
+  - img size: 416, batch_size: 8, epoch: 150, weights: yolov5s.pt 를 이용해 학습
+  <pre><code>
+  !python train.py --img 416 --batch 8 --epochs 150 --data {dataset.location}/data.yaml --weights yolov5s.pt --cache
+  </code></pre>
+
+<br/>
+
+### 테스트 방법
+  <pre><code>
+  # 모델저장
+  %cp /content/yolov5/runs/train/exp/weights/best.pt {dataset.location}
+  # 저장된 모델 실행
+  !python detect.py --source {dataset.location}/test/images/나무/ --weights {dataset.location}/data.pt
+  </code></pre>
 <br/>
