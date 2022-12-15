@@ -43,7 +43,7 @@
 
 ### 학습 방법
   - {dataset.location} 에는 데이터 경로를 입력하면 됩니다. ex) /content/gdrive/MyDrive/drawing
-  - img size: 416, batch_size: 8, epoch: 150, weights: yolov5s.pt 를 이용해 학습
+  - img size: 640, batch_size: 8, epoch: 150, weights: yolov5s.pt 를 이용해 학습
   <pre><code>
   !python train.py --img 416 --batch 8 --epochs 150 --data {dataset.location}/data.yaml --weights yolov5s.pt --cache
   </code></pre>
